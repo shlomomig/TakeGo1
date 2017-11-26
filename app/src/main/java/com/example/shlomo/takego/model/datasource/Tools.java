@@ -14,6 +14,8 @@ import com.example.shlomo.takego.model.entities.Geer;
 
 public class Tools {
 
+
+    private int i;
     public static ContentValues CarToContentValues(Car car) {
         ContentValues contentValues = new ContentValues();
         contentValues.put(CarRentelConst.CarConst.ID, car.get_liscene_number());

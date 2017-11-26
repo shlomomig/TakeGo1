@@ -6,5 +6,5 @@ package com.example.shlomo.takego.model.datasource;
 
 public class anewclass {
 
-float i;
+
 }
