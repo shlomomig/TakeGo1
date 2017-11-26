@@ -18,6 +18,7 @@ import static com.example.shlomo.takego.model.datasource.ListDS.*;
  */
 
 public class List_DBManager implements DB_Manager {
+
     @Override
     public boolean isClientExists(ContentValues contentValues) {
         Client client=Tools.ContentValuesToClient(contentValues);
