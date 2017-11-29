@@ -3,10 +3,12 @@ package com.example.shlomo.takego.model.datasource;
 import android.content.ContentValues;
 
 import com.example.shlomo.takego.model.backend.CarRentelConst;
+import com.example.shlomo.takego.model.entities.Branch;
 import com.example.shlomo.takego.model.entities.Car;
 import com.example.shlomo.takego.model.entities.CarModel;
 import com.example.shlomo.takego.model.entities.Client;
 import com.example.shlomo.takego.model.entities.Geer;
+import com.example.shlomo.takego.model.entities.Order;
 
 /**
  * Created by Shlomo on 19/11/2017.
@@ -15,7 +17,7 @@ import com.example.shlomo.takego.model.entities.Geer;
 public class Tools {
 
 
-    private int i;
+
     public static ContentValues CarToContentValues(Car car) {
         ContentValues contentValues = new ContentValues();
         contentValues.put(CarRentelConst.CarConst.ID, car.get_liscene_number());
@@ -77,6 +79,28 @@ public class Tools {
         client.set_email(contentValues.getAsString(CarRentelConst.ClientConst.EMAIL));
         client.set_phone_number(contentValues.getAsLong(CarRentelConst.ClientConst.PHONE));
         return client;
+    }
+
+    public static ContentValues BranchToContentValues(Branch branch)
+    {
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(CarRentelConst.BranchConst.CITY, branch.get_city());
+        contentValues.put(CarRentelConst.BranchConst.ID, branch.get_branch_number());
+        contentValues.put(CarRentelConst.BranchConst.PARKING_SPOTS, branch.get_parking_spots());
+        contentValues.put(CarRentelConst.BranchConst.STREET, branch.get_street());
+
+        return contentValues;
+    }
+
+
+    public static Branch ContentValuesToBranch(ContentValues contentValues)
+    {
+        Branch branch = new Branch();
+        branch.set_branch_number(contentValues.getAsInteger(CarRentelConst.BranchConst.ID));
+        branch.set_parking_spots(contentValues.getAsInteger(CarRentelConst.BranchConst.PARKING_SPOTS));
+        branch.set_city(contentValues.getAsString(CarRentelConst.BranchConst.CITY));
+        branch.set_street(contentValues.getAsString(CarRentelConst.BranchConst.STREET));
+        return  branch;
     }
 }
 
