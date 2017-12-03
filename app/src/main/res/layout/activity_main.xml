@@ -12,7 +12,7 @@
 
     <Button android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/addLecturerButton" android:text="Add Lecturer"/>
 
-    <Button android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/addCourseButton" android:text="Add Course"/>
+    <Button android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/addCourseButton" android:text="Add"/>
 
     <Button android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/addStudentCourseButton" android:text="Add StudentCourse"/>
 
