@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        int i;
 //        Car carModel=new Car();
 //        carModel.set_branch_number(2);
 //        carModel.set_milage(3);
