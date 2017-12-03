@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:hint="id"
+        android:id="@+id/IdEditText"
+        android:ems="10" android:inputType="number"/>
+
+    <EditText
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:hint="first name"
+        android:id="@+id/FirstNameEditText"
+        android:ems="10"
+        android:inputType="textPersonName"/>
+
+    <EditText
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:hint="last name"
+        android:id="@+id/LastNameEditText"
+        android:ems="10"
+        android:inputType="textPersonName"/>
+    <EditText
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:hint="phone"
+        android:id="@+id/PhoneEditText"
+        android:ems="10"
+        android:inputType="phone"/>
+    <EditText
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:hint="EMail"
+        android:id="@+id/EMailEditText"
+        android:ems="10"
+        android:inputType="textEmailAddress"/>
+    <EditText
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:hint="Credit Card"
+        android:id="@+id/CreditCardEditText"
+        android:ems="10"
+        android:inputType="number"/>
+</LinearLayout>

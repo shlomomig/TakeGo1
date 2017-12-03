@@ -7,6 +7,7 @@ import com.example.shlomo.takego.model.entities.Car;
 import com.example.shlomo.takego.model.entities.CarModel;
 import com.example.shlomo.takego.model.entities.Client;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,5 +25,5 @@ public interface DB_Manager {
 
     List<Car> getCars();
     List<CarModel> getCarModels();
-    List<Client> getClients();
+    ArrayList<Client> getClients();
 }

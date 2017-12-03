@@ -8,6 +8,7 @@ import com.example.shlomo.takego.model.entities.Car;
 import com.example.shlomo.takego.model.entities.CarModel;
 import com.example.shlomo.takego.model.entities.Client;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.example.shlomo.takego.model.datasource.ListDS.*;
@@ -57,7 +58,7 @@ public class List_DBManager implements DB_Manager {
     }
 
     @Override
-    public List getClients() {
+    public ArrayList<Client> getClients() {
         return clients;
     }
 
