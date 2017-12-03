@@ -43,16 +43,16 @@ public class ShowClientsActivity extends AppCompatActivity {
                 Client client = clientList.get(position);
 
                 LayoutInflater inflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-                View view = inflater.inflate(R.layout.client_layout, null);
-                TextView description = (TextView) view.findViewById(R.id.description);
-                TextView address = (TextView) view.findViewById(R.id.address);
-                TextView bedroom = (TextView) view.findViewById(R.id.bedroom);
-                TextView bathroom = (TextView) view.findViewById(R.id.bathroom);
-                TextView carspot = (TextView) view.findViewById(R.id.carspot);
-                TextView price = (TextView) view.findViewById(R.id.price);
+                View view = inflater.inflate(R.layout.client_layout2, null);
+                TextView id = (TextView) view.findViewById(R.id.id);
+                TextView first = (TextView) view.findViewById(R.id.first);
+                TextView last = (TextView) view.findViewById(R.id.last);
+                TextView email = (TextView) view.findViewById(R.id.email);
+                TextView phone = (TextView) view.findViewById(R.id.phone);
                 //ImageView image = (ImageView) view.findViewById(R.id.image);
-                address.setText(client.get_email());
-                price.setText("$" + Integer.valueOf(client.get_id()));
+                id.setText(String.valueOf(client.get_id()));
+                first.setText("first:" +client.get_first_name());
+                last.setText("last:"+client.get_last_name());
 
                 //int imageID = context.getResources().getIdentifier(property.getImage(), "drawable", context.getPackageName());
                 //image.setImageResource(imageID);
