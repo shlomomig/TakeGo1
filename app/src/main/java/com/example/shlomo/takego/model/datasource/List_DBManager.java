@@ -2,8 +2,10 @@ package com.example.shlomo.takego.model.datasource;
 
 import android.content.ContentValues;
 import android.database.Cursor;
+import android.widget.Toast;
 
 import com.example.shlomo.takego.model.backend.DB_Manager;
+import com.example.shlomo.takego.model.entities.Branch;
 import com.example.shlomo.takego.model.entities.Car;
 import com.example.shlomo.takego.model.entities.CarModel;
 import com.example.shlomo.takego.model.entities.Client;
@@ -23,16 +25,22 @@ public class List_DBManager implements DB_Manager {
     @Override
     public boolean isClientExists(ContentValues contentValues) {
         Client client=Tools.ContentValuesToClient(contentValues);
-        if(clients.contains(client))
-            return true;
-        else
-            return  false;
+        for (Client c : clients)
+        {
+            if(c.get_id()==client.get_id())
+                return true;
+        }
+        return false;
     }
 
     @Override
-    public void addClient(ContentValues contentValues) {
+    public boolean addClient(ContentValues contentValues) {
         Client client=Tools.ContentValuesToClient(contentValues);
-        clients.add(client);
+        if(isClientExists(Tools.ClientToContentValues(client)))
+            return false;
+        else
+            {clients.add(client);
+            return true;}
     }
 
     @Override
@@ -48,18 +56,29 @@ public class List_DBManager implements DB_Manager {
     }
 
     @Override
-    public List getCars() {
+    public void addBranch(ContentValues contentValues) {
+        Branch branch=Tools.ContentValuesToBranch(contentValues);
+        branches.add(branch);
+    }
+
+    @Override
+    public ArrayList<Car> getCars() {
         return cars;
     }
 
     @Override
-    public List getCarModels() {
+    public ArrayList<CarModel> getCarModels() {
         return carModels;
     }
 
     @Override
     public ArrayList<Client> getClients() {
         return clients;
+    }
+
+    @Override
+    public ArrayList<Branch> getBranchess() {
+        return branches;
     }
 
 

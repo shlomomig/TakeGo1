@@ -56,7 +56,16 @@ public class AddClientActivity extends AppCompatActivity {
 
 
         DB_Manager db_manager= Factory_DBManager.getManager();
-        db_manager.addClient(Tools.ClientToContentValues(client));
+        if(db_manager.addClient(Tools.ClientToContentValues(client)))
+            Toast.makeText(getApplicationContext(), "Added succssfully!", Toast.LENGTH_LONG).show();
+         else
+            Toast.makeText(getApplicationContext(), "ID exists!", Toast.LENGTH_LONG).show();
+         IdEditText.setText("");
+         FirstNameEditText.setText("");
+         LastNameEditText.setText("");
+         PhoneEditText.setText("");
+                EMailEditText.setText("");
+          CreditCardEditText.setText("");
             }
         });
 

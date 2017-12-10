@@ -1,5 +1,6 @@
 package com.example.shlomo.takego.controller;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,7 +17,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        int i;
 //        Car carModel=new Car();
 //        carModel.set_branch_number(2);
 //        carModel.set_milage(3);
@@ -31,22 +31,65 @@ public class MainActivity extends AppCompatActivity {
 //        manager.addCar(Tools.CarToContentValues(carModel));
 //        manager.addCar(Tools.CarToContentValues(carModel2));
 
-        Button button=(Button)findViewById(R.id.addClientButton);
-        button.setOnClickListener(new View.OnClickListener() {
+        Button addclientButton = (Button) findViewById(R.id.addClientButton);
+        addclientButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(MainActivity.this,AddClientActivity.class);
+                Intent intent = new Intent(MainActivity.this, AddClientActivity.class);
                 startActivity(intent);
             }
         });
-        Button button1=(Button)findViewById(R.id.showClientListButton);
-        button1.setOnClickListener(new View.OnClickListener() {
+        Button showClentButton = (Button) findViewById(R.id.showClientListButton);
+        showClentButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(MainActivity.this,ShowClientsActivity.class);
+                Intent intent = new Intent(MainActivity.this, ShowClientsActivity.class);
                 startActivity(intent);
             }
         });
+        Button addCarButton = (Button) findViewById(R.id.addCarButton);
+        addCarButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, AddCarActivity.class);
+                startActivity(intent);
+            }
+        });
+        Button showCarButton = (Button) findViewById(R.id.showCarListButton);
+        showCarButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ShowCarActivity.class);
+                startActivity(intent);
+            }
+
+        });
+        Button addModelButton = (Button) findViewById(R.id.addModelButton);
+        addModelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, AddModelActivity.class);
+                startActivity(intent);
+            }
+
+        });
+        Button addBrnachButton = (Button) findViewById(R.id.addBBranchButton);
+        addBrnachButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, AddBranchActivity.class);
+                startActivity(intent);
+            }
+        });
+        Button showbracnhesButton = (Button) findViewById(R.id.showBranchesListButton);
+        showbracnhesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ShowBranchesActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
     }
 
@@ -54,6 +97,5 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
     }
 }

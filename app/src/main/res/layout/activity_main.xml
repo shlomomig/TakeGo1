@@ -10,20 +10,16 @@
 
     <Button android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/addClientButton" android:text="Add Client"/>
 
-    <Button android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/addLecturerButton" android:text="Add Lecturer"/>
+    <Button android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/addCarButton" android:text="Add Car"/>
 
-    <Button android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/addCourseButton" android:text="Add"/>
+    <Button android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/addModelButton" android:text="Add Model"/>
 
-    <Button android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/addStudentCourseButton" android:text="Add StudentCourse"/>
+    <Button android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/addBBranchButton" android:text="Add branch"/>
 
-    <Button android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/showClientListButton" android:text="Show Client List" android:layout_marginTop="40dp"/>
+    <Button android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/showClientListButton" android:text="Show Client List" android:layout_marginTop="20dp"/>
 
-    <Button android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/showCourseListButton" android:text="Show Course List"/>
+    <Button android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/showCarListButton" android:text="Show Car List"/>
 
-    <Button android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/startServiceButton" android:text="start service" android:layout_marginTop="20dp"/>
-
-    <Button android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/sendBroadcastButton" android:text="send broadcast"/>
-
-    <Button android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/getAllContactsButton" android:text="Get All Contacts"/>
+    <Button android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/showBranchesListButton" android:text="Show Branches List"/>
 
 </LinearLayout>

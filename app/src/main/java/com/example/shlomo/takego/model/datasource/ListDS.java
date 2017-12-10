@@ -15,8 +15,8 @@ import java.util.List;
 
 public class ListDS {
     static ArrayList<Client> clients=new ArrayList<>();
-    static List<Car> cars=new ArrayList<>();
-    static List<Branch> branches=new ArrayList<>();
-    static List<CarModel> carModels=new ArrayList<>();
+    static ArrayList<Car> cars=new ArrayList<>();
+    static ArrayList<Branch> branches=new ArrayList<>();
+    static ArrayList<CarModel> carModels=new ArrayList<>();
 
 }
