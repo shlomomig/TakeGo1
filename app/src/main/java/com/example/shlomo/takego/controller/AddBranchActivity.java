@@ -1,5 +1,6 @@
 package com.example.shlomo.takego.controller;
 
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -32,15 +33,26 @@ public class AddBranchActivity extends AppCompatActivity {
                 EditText streetEditText = (EditText)findViewById(R.id.StreetEditText);
                 EditText parkingSpotsEditText=(EditText)findViewById(R.id.ParkingSpotseEditText) ;
 
-                Branch branch=new Branch();
+                final Branch branch=new Branch();
                 try {
                     branch.set_branch_number(Integer.valueOf(branchNumberEditText.getText().toString()));
                     branch.set_city(cityEditText.getText().toString());
                     branch.set_parking_spots(Integer.valueOf(parkingSpotsEditText.getText().toString()));
                     branch.set_street(streetEditText.getText().toString());
-                    DB_Manager db_manager = Factory_DBManager.getManager();
-                    db_manager.addBranch(Tools.BranchToContentValues(branch));
-                    Toast.makeText(getApplicationContext(), "Added succssfully!", Toast.LENGTH_LONG).show();
+                    new AsyncTask<Void, Void, Void>() {
+                        @Override
+                        protected void onPostExecute(Void kuku) {
+                            super.onPostExecute(kuku);
+                            Toast.makeText(getApplicationContext(), "Added succssfully!", Toast.LENGTH_LONG).show();
+                        }
+
+                        @Override
+                        protected Void doInBackground(Void... params) {
+                            DB_Manager db_manager = Factory_DBManager.getManager();
+                            db_manager.addBranch(Tools.BranchToContentValues(branch));
+                            return null;
+                        }
+                    }.execute();
 
                     //CarModelEditText.setText("");
                     branchNumberEditText.setText("");

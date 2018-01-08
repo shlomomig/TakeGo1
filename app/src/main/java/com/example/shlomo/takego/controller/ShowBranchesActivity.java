@@ -2,6 +2,7 @@ package com.example.shlomo.takego.controller;
 
 import android.app.Activity;
 import android.content.Context;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -55,10 +56,27 @@ public class ShowBranchesActivity extends AppCompatActivity {
                 return view;
             }
         }
-        DB_Manager db_manager= Factory_DBManager.getManager();
-        ListView listView=(ListView)findViewById(R.id.branchesList);
-        ArrayAdapter<Branch> adapter = new myadapter(this, 0, db_manager.getBranchess());
-        listView.setAdapter(adapter);
+
+        final ListView listView=(ListView)findViewById(R.id.branchesList);
+
+        new AsyncTask<Void, Void, ArrayAdapter<Branch>>() {
+            @Override
+            protected void onPostExecute(ArrayAdapter<Branch> adapter) {
+                super.onPostExecute(adapter);
+
+                listView.setAdapter(adapter);
+            }
+
+            @Override
+            protected ArrayAdapter<Branch> doInBackground(Void... params) {
+                DB_Manager db_manager= Factory_DBManager.getManager();
+                ArrayAdapter<Branch> adapter = new myadapter(ShowBranchesActivity.this, 0, db_manager.getBranchess());
+                return adapter;
+            }
+        }.execute();
+
+
+
 
     }
     }

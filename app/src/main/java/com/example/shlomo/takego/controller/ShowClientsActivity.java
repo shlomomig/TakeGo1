@@ -2,6 +2,7 @@ package com.example.shlomo.takego.controller;
 
 import android.app.Activity;
 import android.content.Context;
+import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 import com.example.shlomo.takego.R;
 import com.example.shlomo.takego.model.backend.DB_Manager;
 import com.example.shlomo.takego.model.backend.Factory_DBManager;
+import com.example.shlomo.takego.model.entities.Car;
 import com.example.shlomo.takego.model.entities.Client;
 
 import java.util.ArrayList;
@@ -59,10 +61,24 @@ public class ShowClientsActivity extends AppCompatActivity {
                 return view;
             }
         }
-        DB_Manager db_manager=Factory_DBManager.getManager();
-        ListView listView=(ListView)findViewById(R.id.clientList);
-        ArrayAdapter<Client> adapter = new myadapter(this, 0, db_manager.getClients());
-        listView.setAdapter(adapter);
+        final ListView listView=(ListView)findViewById(R.id.clientList);
+        new AsyncTask<Void, Void, ArrayAdapter<Client>>() {
+            @Override
+            protected void onPostExecute(ArrayAdapter<Client> adapter) {
+                super.onPostExecute(adapter);
+
+                listView.setAdapter(adapter);
+            }
+
+            @Override
+            protected ArrayAdapter<Client> doInBackground(Void... params) {
+                DB_Manager db_manager= Factory_DBManager.getManager();
+                ArrayAdapter<Client> adapter = new myadapter(ShowClientsActivity.this, 0, db_manager.getClients());
+                return adapter;
+            }
+        }.execute();
+
+
 
     }
 }

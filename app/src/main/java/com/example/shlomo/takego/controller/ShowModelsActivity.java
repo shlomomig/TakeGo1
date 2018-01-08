@@ -17,66 +17,64 @@ import com.example.shlomo.takego.model.backend.DB_Manager;
 import com.example.shlomo.takego.model.backend.Factory_DBManager;
 import com.example.shlomo.takego.model.entities.Car;
 import com.example.shlomo.takego.model.entities.CarModel;
-import com.example.shlomo.takego.model.entities.Client;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ShowCarActivity extends AppCompatActivity {
+public class ShowModelsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_show_car);
-
-        class myadapter extends ArrayAdapter<Car>
+        setContentView(R.layout.activity_show_models);
+        class myadapter extends ArrayAdapter<CarModel>
         {
             private Context context;
-            private List<Car> carList;
+            private List<CarModel> carModelsList;
             //constructor, call on creation
-            public myadapter(Context context, int resource, ArrayList<Car> objects) {
+            public myadapter(Context context, int resource, ArrayList<CarModel> objects) {
                 super(context, resource, objects);
                 this.context = context;
-                this.carList = objects;
+                this.carModelsList = objects;
             }
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
-                Car car = carList.get(position);
+                CarModel carModel = carModelsList.get(position);
 
                 LayoutInflater inflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-                View view = inflater.inflate(R.layout.car_layout, null);
-                TextView carModel = (TextView) view.findViewById(R.id.carmodel);
-                TextView liscence = (TextView) view.findViewById(R.id.liscencenumber);
-                TextView milage = (TextView) view.findViewById(R.id.milage);
-                TextView branch = (TextView) view.findViewById(R.id.brachnumber);
+                View view = inflater.inflate(R.layout.car_model_layout, null);
+                TextView id = (TextView) view.findViewById(R.id.carmodeloflayout);
+               // TextView liscence = (TextView) view.findViewById(R.id.liscencenumber);
+                //TextView milage = (TextView) view.findViewById(R.id.milage);
+                //TextView branch = (TextView) view.findViewById(R.id.brachnumber);
                 //ImageView image = (ImageView) view.findViewById(R.id.image);
-                carModel.setText("Car model:" + String.valueOf(car.get_car_model()));
-                liscence.setText("Liscence:" +car.get_liscene_number());
-                milage.setText("Milage:"+car.get_milage());
-                branch.setText("Brach:"+ car.get_branch_number());
+                id.setText("Car model:" + String.valueOf(carModel.get_model_code()));
+                //liscence.setText("Liscence:" +car.get_liscene_number());
+                //milage.setText("Milage:"+car.get_milage());
+                //branch.setText("Brach:"+ car.get_branch_number());
 
                 //int imageID = context.getResources().getIdentifier(property.getImage(), "drawable", context.getPackageName());
                 //image.setImageResource(imageID);
                 return view;
             }
         }
-
-        final ListView listView=(ListView)findViewById(R.id.carList);
-
-        new AsyncTask<Void, Void, ArrayAdapter<Car>>() {
+            final ListView listView=(ListView)findViewById(R.id.modelList);
+            new AsyncTask<Void, Void, ArrayAdapter<CarModel>>() {
             @Override
-            protected void onPostExecute(ArrayAdapter<Car> adapter) {
+            protected void onPostExecute(ArrayAdapter<CarModel> adapter) {
                 super.onPostExecute(adapter);
 
                 listView.setAdapter(adapter);
             }
 
             @Override
-            protected ArrayAdapter<Car> doInBackground(Void... params) {
+            protected ArrayAdapter<CarModel> doInBackground(Void... params) {
                 DB_Manager db_manager= Factory_DBManager.getManager();
-                ArrayAdapter<Car> adapter = new myadapter(ShowCarActivity.this, 0, db_manager.getCars());
+                ArrayAdapter<CarModel> adapter = new myadapter(ShowModelsActivity.this, 0, db_manager.getCarModels());
                 return adapter;
             }
         }.execute();
+
+
     }
 }

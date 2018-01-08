@@ -1,23 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <EditText
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:hint="Car model"
-        android:id="@+id/CarModelEditText"
-        android:ems="10" android:inputType="text"/>
 
-    <EditText
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:hint="Brach number"
-        android:id="@+id/BrachNumberEditText"
-        android:ems="10"
-        android:inputType="number"/>
 
     <EditText
         android:layout_height="wrap_content"
@@ -34,6 +22,14 @@
         android:ems="10"
         android:inputType="number"/>
 
+    <TextView
+        android:id="@+id/modeltextviewofcar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="3dp"
+        android:text="Model:"
+        android:textSize="18sp" />
+
     <Spinner
         android:id="@+id/modelspinner"
         android:layout_width="wrap_content"
@@ -41,9 +37,18 @@
         android:hint="Liscence number"
          />
 
+    <TextView
+        android:id="@+id/branchtextviewofcar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="3dp"
+        android:text="Branch number:"
+        android:textSize="18sp" />
     <Spinner
         android:id="@+id/branchesSpinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="branches number"/>
+
+
 </LinearLayout>

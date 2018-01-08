@@ -90,7 +90,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        Button showmodelsButton = (Button) findViewById(R.id.showModelsListButton);
+        showmodelsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ShowModelsActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

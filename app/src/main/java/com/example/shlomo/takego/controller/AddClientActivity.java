@@ -1,5 +1,6 @@
 package com.example.shlomo.takego.controller;
 
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -40,7 +41,7 @@ public class AddClientActivity extends AppCompatActivity {
                 PhoneEditText = (EditText)findViewById( R.id.PhoneEditText );
                 EMailEditText = (EditText)findViewById( R.id.EMailEditText );
                 CreditCardEditText = (EditText)findViewById( R.id.CreditCardEditText );
-                        Client client=new Client();
+                final Client client=new Client();
                 try{
                     client.set_id((Integer.valueOf(IdEditText.getText().toString())));
                     client.set_first_name(FirstNameEditText.getText().toString());
@@ -55,11 +56,24 @@ public class AddClientActivity extends AppCompatActivity {
             }
 
 
-        DB_Manager db_manager= Factory_DBManager.getManager();
-        if(db_manager.addClient(Tools.ClientToContentValues(client)))
-            Toast.makeText(getApplicationContext(), "Added succssfully!", Toast.LENGTH_LONG).show();
-         else
-            Toast.makeText(getApplicationContext(), "ID exists!", Toast.LENGTH_LONG).show();
+
+                new AsyncTask<Void, Void, Boolean>() {
+                    @Override
+                    protected void onPostExecute(Boolean res) {
+                        super.onPostExecute(res);
+                        if(res==true)
+                            Toast.makeText(getApplicationContext(), "Added succssfully!", Toast.LENGTH_LONG).show();
+                        else
+                            Toast.makeText(getApplicationContext(), "ID exists!", Toast.LENGTH_LONG).show();
+                    }
+
+                    @Override
+                    protected Boolean doInBackground(Void... params) {
+                        DB_Manager db_manager = Factory_DBManager.getManager();
+                        return db_manager.addClient(Tools.ClientToContentValues(client));
+                    }
+                }.execute();
+
          IdEditText.setText("");
          FirstNameEditText.setText("");
          LastNameEditText.setText("");

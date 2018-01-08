@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.shlomo.takego">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -22,7 +24,8 @@
         <activity android:name=".controller.ShowCarActivity" />
         <activity android:name=".controller.AddModelActivity" />
         <activity android:name=".controller.AddBranchActivity" />
-        <activity android:name=".controller.ShowBranchesActivity"></activity>
+        <activity android:name=".controller.ShowBranchesActivity" />
+        <activity android:name=".controller.ShowModelsActivity"></activity>
     </application>
 
 </manifest>

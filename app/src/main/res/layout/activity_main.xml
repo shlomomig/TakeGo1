@@ -22,4 +22,6 @@
 
     <Button android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/showBranchesListButton" android:text="Show Branches List"/>
 
+    <Button android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/showModelsListButton" android:text="Show Models List"/>
+
 </LinearLayout>

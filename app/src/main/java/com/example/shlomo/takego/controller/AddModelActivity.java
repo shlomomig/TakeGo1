@@ -1,5 +1,6 @@
 package com.example.shlomo.takego.controller;
 
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -45,7 +46,7 @@ public class AddModelActivity extends AppCompatActivity {
                 seatNumberEditText = (EditText) findViewById(R.id.seatnumberEditText);
 //                Spinner spinner=(Spinner)findViewById(R.id.modelspinner);
 //                String model=spinner.getItemAtPosition(spinner.getSelectedItemPosition()).toString();
-                CarModel carModel=new CarModel();
+                final CarModel carModel=new CarModel();
                 try {
                     //carModel.set_geer(Geer.valueOf(geerEditText.getText().toString()));
                     int geer=geerGroup.getCheckedRadioButtonId();
@@ -57,9 +58,22 @@ public class AddModelActivity extends AppCompatActivity {
                     carModel.set_engine_volume(Integer.valueOf(volumeEditText.getText().toString()));
                     carModel.set_company_name(companyNameEditText.getText().toString());
 
-                    DB_Manager db_manager = Factory_DBManager.getManager();
-                    db_manager.addCarModel(Tools.CarModelToContentValus(carModel));
-                    Toast.makeText(getApplicationContext(), "Added succssfully!", Toast.LENGTH_LONG).show();
+                    new AsyncTask<Void, Void, Void>() {
+                        @Override
+                        protected void onPostExecute(Void kuku) {
+                            super.onPostExecute(kuku);
+                            Toast.makeText(getApplicationContext(), "Added succssfully!", Toast.LENGTH_LONG).show();
+                        }
+
+                        @Override
+                        protected Void doInBackground(Void... params) {
+                            DB_Manager db_manager = Factory_DBManager.getManager();
+                            db_manager.addCarModel(Tools.CarModelToContentValus(carModel));
+                            return null;
+                        }
+                    }.execute();
+
+
                     modelCodeEditText.setText("");
                     ModelNameEditText.setText("");
                     //geerEditText.setText("");

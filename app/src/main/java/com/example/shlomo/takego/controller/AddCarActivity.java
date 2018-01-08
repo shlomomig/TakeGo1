@@ -1,5 +1,6 @@
 package com.example.shlomo.takego.controller;
 
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -29,28 +30,53 @@ public class AddCarActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_car);
 
 
-        Spinner spinner=(Spinner)findViewById(R.id.modelspinner);
-        Spinner spinner2=(Spinner)findViewById(R.id.branchesSpinner);
-        DB_Manager db_manager = Factory_DBManager.getManager();
-        ArrayList<CarModel> arr=db_manager.getCarModels();
-        ArrayList<String> items=new ArrayList<>();
-        for(CarModel carModel : arr)
-        {
-            items.add(carModel.get_model_name());
+        final Spinner spinner=(Spinner)findViewById(R.id.modelspinner);
+        final Spinner spinner2=(Spinner)findViewById(R.id.branchesSpinner);
+        new AsyncTask<Void, Void, ArrayList<CarModel>>() {
+            @Override
+            protected void onPostExecute(ArrayList<CarModel> arr) {
+                super.onPostExecute(arr);
+                ArrayList<String> items=new ArrayList<>();
+                for(CarModel carModel : arr)
+                {
+                    items.add(carModel.get_model_name());
 
-        }
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, items);
-        spinner.setAdapter(adapter);
+                }
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(AddCarActivity.this, android.R.layout.simple_spinner_dropdown_item, items);
+                spinner.setAdapter(adapter);
+            }
 
-        ArrayList<Branch> arr2=db_manager.getBranchess();
-        ArrayList<String> items2=new ArrayList<>();
-        for(Branch branch : arr2)
-        {
-            items2.add(String.valueOf(branch.get_branch_number()));
+            @Override
+            protected ArrayList<CarModel> doInBackground(Void... params) {
+                DB_Manager db_manager = Factory_DBManager.getManager();
+                ArrayList<CarModel> arr=db_manager.getCarModels();
+                return arr;
+            }
+        }.execute();
 
-        }
-        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, items2);
-        spinner2.setAdapter(adapter2);
+        new AsyncTask<Void, Void, ArrayList<Branch>>() {
+            @Override
+            protected void onPostExecute(ArrayList<Branch> arr) {
+                super.onPostExecute(arr);
+                ArrayList<String> items2=new ArrayList<>();
+                for(Branch branch : arr)
+                {
+                    items2.add(String.valueOf(branch.get_branch_number()));
+
+                }
+                ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(AddCarActivity.this, android.R.layout.simple_spinner_dropdown_item, items2);
+                spinner2.setAdapter(adapter2);
+            }
+
+            @Override
+            protected ArrayList<Branch> doInBackground(Void... params) {
+                DB_Manager db_manager = Factory_DBManager.getManager();
+                ArrayList<Branch> arr=db_manager.getBranchess();
+                return arr;
+            }
+        }.execute();
+
+
 
         Button addButton=(Button)findViewById(R.id.addCarButton);
         addButton.setOnClickListener(new View.OnClickListener() {
@@ -59,15 +85,15 @@ public class AddCarActivity extends AppCompatActivity {
 
                 //EditText CarModelEditText;
                 EditText MilageEditText;
-                EditText BrachNumberEditText;
+               // EditText BrachNumberEditText;
                 EditText LiscenceEditText;
                 //CarModelEditText = (EditText) findViewById(R.id.CarModelEditText);
                 MilageEditText = (EditText) findViewById(R.id.MilageEditText);
-                BrachNumberEditText = (EditText) findViewById(R.id.BrachNumberEditText);
+                //BrachNumberEditText = (EditText) findViewById(R.id.BrachNumberEditText);
                 LiscenceEditText = (EditText) findViewById(R.id.LiscenceEditText);
                 Spinner spinner1=(Spinner)findViewById(R.id.modelspinner);
                 Spinner spinner2=(Spinner)findViewById(R.id.branchesSpinner);
-                Car car = new Car();
+                final Car car = new Car();
                 try {
                     //car.set_car_model(CarModelEditText.getText().toString());
 
@@ -77,13 +103,28 @@ public class AddCarActivity extends AppCompatActivity {
                     car.set_milage(Integer.valueOf(MilageEditText.getText().toString()));
                     car.set_liscene_number(Integer.valueOf(LiscenceEditText.getText().toString()));
                     car.set_branch_number(Integer.valueOf(branch));
-                    DB_Manager db_manager = Factory_DBManager.getManager();
-                    db_manager.addCar(Tools.CarToContentValues(car));
-                    Toast.makeText(getApplicationContext(), "Added succssfully!", Toast.LENGTH_LONG).show();
+
+
+                    new AsyncTask<Void, Void, Void>() {
+                        @Override
+                        protected void onPostExecute(Void kuku) {
+                            super.onPostExecute(kuku);
+                            Toast.makeText(getApplicationContext(), "Added succssfully!", Toast.LENGTH_LONG).show();
+                        }
+
+                        @Override
+                        protected Void doInBackground(Void... params) {
+                            DB_Manager db_manager = Factory_DBManager.getManager();
+                            db_manager.addCar(Tools.CarToContentValues(car));
+                            return null;
+                        }
+                    }.execute();
+
+
 
                     //CarModelEditText.setText("");
                     MilageEditText.setText("");
-                    BrachNumberEditText.setText("");
+                    //BrachNumberEditText.setText("");
                     LiscenceEditText.setText("");
                 } catch (Exception e) {
                     Toast.makeText(getApplicationContext(), "You should enter a number where needed", Toast.LENGTH_LONG).show();
