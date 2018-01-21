@@ -78,8 +78,8 @@ public class AddClientActivity extends AppCompatActivity {
          FirstNameEditText.setText("");
          LastNameEditText.setText("");
          PhoneEditText.setText("");
-                EMailEditText.setText("");
-          CreditCardEditText.setText("");
+         EMailEditText.setText("");
+         CreditCardEditText.setText("");
             }
         });
 

@@ -20,7 +20,7 @@ import static com.example.shlomo.takego.model.datasource.ListDS.*;
  * Created by Shlomo on 21/11/2017.
  */
 
-public class List_DBManager implements DB_Manager {
+public class  List_DBManager implements DB_Manager {
 
     @Override
     public boolean isClientExists(ContentValues contentValues) {

@@ -49,10 +49,10 @@ public class ShowBranchesActivity extends AppCompatActivity {
                 TextView street = (TextView) view.findViewById(R.id.street_forlist);
                 TextView parkingSpots = (TextView) view.findViewById(R.id.parkingSpots_forlist);
                 //ImageView image = (ImageView) view.findViewById(R.id.image);
-                branchNumber.setText("Branch number:" + String.valueOf(branch.get_branch_number()));
-                city.setText("City:" +branch.get_city());
-                street.setText("Street:"+branch.get_street());
-                parkingSpots.setText("Parking spots:"+ branch.get_parking_spots());
+                branchNumber.setText("Branch number: " + String.valueOf(branch.get_branch_number()));
+                city.setText("City: " +branch.get_city());
+                street.setText("Street: "+branch.get_street());
+                parkingSpots.setText("Parking spots: "+ branch.get_parking_spots());
                 return view;
             }
         }

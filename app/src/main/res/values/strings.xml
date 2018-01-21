@@ -1,3 +1,27 @@
 <resources>
     <string name="app_name">Take&amp;Go</string>
+
+
+    <string-array name="sp_entries">
+
+        <item ></item>
+
+    <item >add client</item>
+    <item >add car</item>
+    <item >add model</item>
+    <item >add branch</item>
+
+</string-array>
+
+
+
+    <string-array name="sp_entries2">
+
+        <item ></item>
+        <item >show client</item>
+        <item >show car</item>
+        <item >show model</item>
+        <item >show branch</item>
+
+    </string-array>
 </resources>

@@ -47,15 +47,16 @@ public class ShowClientsActivity extends AppCompatActivity {
                 LayoutInflater inflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
                 View view = inflater.inflate(R.layout.client_layout2, null);
                 TextView id = (TextView) view.findViewById(R.id.id);
-                TextView first = (TextView) view.findViewById(R.id.first);
+                TextView first = (TextView) view.findViewById(R.id.first_name);
                 TextView last = (TextView) view.findViewById(R.id.last);
                 TextView email = (TextView) view.findViewById(R.id.email);
                 TextView phone = (TextView) view.findViewById(R.id.phone);
                 //ImageView image = (ImageView) view.findViewById(R.id.image);
                 id.setText(String.valueOf(client.get_id()));
-                first.setText("first:" +client.get_first_name());
-                last.setText("last:"+client.get_last_name());
-
+                first.setText("First name: " +client.get_first_name());
+                last.setText("Last name: "+client.get_last_name());
+                email.setText("Email: " +client.get_email());
+                phone.setText("Phone number: " +client.get_phone_number());
                 //int imageID = context.getResources().getIdentifier(property.getImage(), "drawable", context.getPackageName());
                 //image.setImageResource(imageID);
                 return view;

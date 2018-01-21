@@ -48,12 +48,12 @@ public class ShowCarActivity extends AppCompatActivity {
                 TextView carModel = (TextView) view.findViewById(R.id.carmodel);
                 TextView liscence = (TextView) view.findViewById(R.id.liscencenumber);
                 TextView milage = (TextView) view.findViewById(R.id.milage);
-                TextView branch = (TextView) view.findViewById(R.id.brachnumber);
+                TextView branch = (TextView) view.findViewById(R.id.branchnumber);
                 //ImageView image = (ImageView) view.findViewById(R.id.image);
-                carModel.setText("Car model:" + String.valueOf(car.get_car_model()));
-                liscence.setText("Liscence:" +car.get_liscene_number());
-                milage.setText("Milage:"+car.get_milage());
-                branch.setText("Brach:"+ car.get_branch_number());
+                carModel.setText("Car model :" + String.valueOf(car.get_car_model()));
+                liscence.setText("Liscence: " +car.get_liscene_number());
+                milage.setText("Milage: "+car.get_milage());
+                branch.setText("Branch: "+ car.get_branch_number());
 
                 //int imageID = context.getResources().getIdentifier(property.getImage(), "drawable", context.getPackageName());
                 //image.setImageResource(imageID);

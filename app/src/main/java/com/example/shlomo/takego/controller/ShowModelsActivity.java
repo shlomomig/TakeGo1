@@ -48,7 +48,7 @@ public class ShowModelsActivity extends AppCompatActivity {
                 //TextView milage = (TextView) view.findViewById(R.id.milage);
                 //TextView branch = (TextView) view.findViewById(R.id.brachnumber);
                 //ImageView image = (ImageView) view.findViewById(R.id.image);
-                id.setText("Car model:" + String.valueOf(carModel.get_model_code()));
+                id.setText("Car model: " + String.valueOf(carModel.get_model_code()));
                 //liscence.setText("Liscence:" +car.get_liscene_number());
                 //milage.setText("Milage:"+car.get_milage());
                 //branch.setText("Brach:"+ car.get_branch_number());
