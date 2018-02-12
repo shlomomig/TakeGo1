@@ -22,8 +22,10 @@ import com.example.shlomo.takego.model.entities.Client;
 
 public class MainActivity extends AppCompatActivity {
 
+
     private Spinner spinner1;
     private Spinner spinner2;
+
 
     @Override
     protected void onStart() {
@@ -218,6 +220,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
 
     @Override
     protected void onResume() {
